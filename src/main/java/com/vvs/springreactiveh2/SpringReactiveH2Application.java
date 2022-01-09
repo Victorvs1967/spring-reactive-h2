@@ -23,12 +23,14 @@ public class SpringReactiveH2Application {
 	@Bean
 	ApplicationRunner init(TodoRepository repository, DatabaseClient client) {
 		return args -> {
-			client.sql("create table IF NOT EXISTS TODO (id SERIAL PRIMARY KEY, text varchar (255) not null, completed boolean default false);").fetch().first().subscribe();
+			client.sql("create table IF NOT EXISTS TODO (id SERIAL PRIMARY KEY, text varchar(255) not null, completed boolean default false);").fetch().first().subscribe();
 			client.sql("DELETE FROM TODO;").fetch().first().subscribe();
 
-			Stream<Todo> stream = Stream.of(new Todo(null, "Hi, this is my first todo!", false),
+			Stream<Todo> stream = Stream.of(
+				new Todo(null, "Hi, this is my first todo!", false),
 				new Todo(null, "This one I have acomplished!", true),
-				new Todo(null, "And this is secret", false));
+				new Todo(null, "And this is secret", false)
+			);
 
 			repository.saveAll(Flux.fromStream(stream))
 				.then()
