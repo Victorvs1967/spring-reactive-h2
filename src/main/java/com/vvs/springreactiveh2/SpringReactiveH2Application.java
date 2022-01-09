@@ -29,8 +29,7 @@ public class SpringReactiveH2Application {
 			Stream<Todo> stream = Stream.of(
 				new Todo(null, "Hi, this is my first todo!", false),
 				new Todo(null, "This one I have acomplished!", true),
-				new Todo(null, "And this is secret", false)
-			);
+				new Todo(null, "And this is secret", false));
 
 			repository.saveAll(Flux.fromStream(stream))
 				.then()
