@@ -13,7 +13,7 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 
 @Configuration
 public class TodoRouter {
-  
+
   @Bean
   public RouterFunction<ServerResponse> todoRouterFunction(TodoHandler todoHandler) {
     return RouterFunctions
