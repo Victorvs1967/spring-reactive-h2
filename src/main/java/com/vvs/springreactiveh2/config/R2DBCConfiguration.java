@@ -12,7 +12,7 @@ public class R2DBCConfiguration extends AbstractR2dbcConfiguration {
   public H2ConnectionFactory connectionFactory() {
     return new H2ConnectionFactory(
       H2ConnectionConfiguration.builder()
-        .url("r2dbc:h2:mem:defaoult;DB_CLOSE_DELAY=-1;")
+        .url("r2dbc:h2:mem:default;DB_CLOSE_DELAY=-1;")
         .username("sa")
         .build()
     );
